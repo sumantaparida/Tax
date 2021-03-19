@@ -20,8 +20,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script>
       //Helper Function
-			document.title = "Turtlemint provide save tax";
-			document.head.innerHTML += '<meta property="og:title" content="ABC Blabla 2020 Friday" />';
+			// document.title = "Turtlemint provide save tax";
+			// document.head.innerHTML += '<meta property="og:title" content="ABC Blabla 2020 Friday" />';
 			function getParameterByName(name, url = window.location.href) {
 			    name = name.replace(/[\[\]]/g, '\\$&');
 			    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -29,16 +29,6 @@
 			    if (!results) return null;
 			    if (!results[2]) return '';
 			    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-			}
-			var URL = "tax-calculator_3.html?tHSurplus="+getParameterByName('tHSurplus')+"&tHSaving="+getParameterByName('tHSaving')+"&tLESurplus="+getParameterByName('tLESurplus')+"&tLESaving="+getParameterByName('tLESaving')+"&gTSaving="+getParameterByName('gTSaving');
-			var D_URL= "https://web.whatsapp.com://send?text="+URL;
-			var M_URL= "whatsapp://send?text="+URL;
-			if (innerWidth > 700) {
-				console.log('Desktop', innerWidth > 700, D_URL);
-				document.getElementById("whatsapp").href = D_URL;
-			} else {
-				console.log(M_URL);
-				// document.getElementById("whatsapp").href = M_URL;
 			}
 		</script>
 		<title>Tax Calculator</title>
@@ -126,7 +116,7 @@
 						<div class="row">
 							<input type="hidden" id="gTSaving" name="gTSaving" value="0">
 							<!-- <input type="submit" value="SHARE VIA WHATSAPP" class="btn-green"> -->
-							<a id="whatsapp" class="btn-green" target="_blank" alt="" title="" href="whatsapp://send?text=https://sumantaparida.github.io/Tax/tax-calculator_3.html?tHSurplus=25000&tHSaving=1250&tLESurplus=150000&tLESaving=7500&gTSaving=1250" data-action="share/whatsapp/share">SHARE VIA WHATSAPP</a>
+							<a id="whatsapp" class="btn-green" target="_blank" alt="" title=""  data-action="share/whatsapp/share">SHARE VIA WHATSAPP</a>
 							<!-- <a id="whatsapp" class="btn-green" target="_blank" alt="" title="" href="whatsapp://send?text=tax-calculator_3.html?tHSurplus=50000.00&tHSaving=15000.00&tLESurplus=150000.00&tLESaving=45000.00&gTSaving=0.00">SHARE VIA WHATSAPP</a> -->
 						</div>
 						<!-- <div style="margin-top: 80px;">
@@ -151,6 +141,17 @@
 			var tHS = +document.getElementById('tHSaving').value;
 			var tLE = +document.getElementById('tLESaving').value;
 			
+			var URL = "tax-calculator_3.html?tHSurplus="+getParameterByName('tHSurplus')+"&tHSaving="+getParameterByName('tHSaving')+"&tLESurplus="+getParameterByName('tLESurplus')+"&tLESaving="+getParameterByName('tLESaving')+"&gTSaving="+getParameterByName('gTSaving');
+			var D_URL= "https://web.whatsapp.com://send?text="+URL;
+			var M_URL= "whatsapp://send?text="+URL;
+			if (innerWidth > 700) {
+				console.log('Desktop', innerWidth > 700, D_URL);
+				document.getElementById("whatsapp").href = D_URL;
+			} else {
+				console.log(M_URL);
+				// document.getElementById("whatsapp").href = M_URL;
+			}
+
 			if((tHS+tLE)>0){}
 			else{
 			  //var moreSaving = document.getElementById("moreSaving");
