@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<!-- MediaQuery & Other CSS -->
+		<link rel="stylesheet" href="css/app-style.css">
+		<!-- Font -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+		<!-- ICON -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Tax Calculator</title>
+		<script>
+      //Helper Function
+			function getParameterByName(name, url = window.location.href) {
+			    name = name.replace(/[\[\]]/g, '\\$&');
+			    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+			        results = regex.exec(url);
+			    if (!results) return null;
+			    if (!results[2]) return '';
+			    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+			}
+		</script>
+	</head>
+	<body>
+		<div class="mainscreen">
+			<!-- Header -->
+			<section style="" class="header-section" >
+				<div class="container">
+					<div class="row">
+						<div class="col-12 header3">
+							<img src="images/header-img-3.png" alt="" style="width: 100%;">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="main-section">
+				<div class="container device-height" style="padding : 50px 20px 10px 20px;">
+					<div class="row pb15">
+						<div class="col-7">
+							<h3 class="title green-text">Your Current<br>
+								Tax Saving is ₹<span id="gTSavingSpan">0</span>
+							</h3>
+							<p id="moreSaving">But, there is more to save!</p>
+						</div>
+						<div class="col-5 pt15">
+							<img src="images/header-img.png" width="100%">            
+						</div>
+					</div>
+					<form action="" onsubmit="return taxSaverCalc();">
+						<!-- Title 1 -->
+						<div class="row inner-row pt15">
+							<div class="col-12">
+								<h3 class="title green-text text-center">Health Insurance</h3>
+							</div>
+						</div>
+						<div class="row inner-row pb15">
+							<div class="col-6">
+								<div class="row">
+									<div class="col-4">
+										<h3 class="title fw500">Buy</h3>
+									</div>
+									<div class="col-8">
+										<span class="currencyinput value-box">₹<input type="number" id="tHSurplus" name="tHSurplus" required value="0"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="row">
+									<div class="col-4">
+										<h3 class="title fw500">Save</h3>
+									</div>
+									<div class="col-8">
+										<span class="currencyinput value-box">₹<input type="number" id="tHSaving" name="tHSaving" required value="0"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Title 2 -->
+						<div class="row inner-row pt15" style="margin-top: 10px;">
+							<div class="col-12">
+								<h3 class="title green-text text-center">Mutual Funds/ Life Insruance</h3>
+							</div>
+						</div>
+						<div class="row inner-row pb15">
+							<div class="col-6">
+								<div class="row">
+									<div class="col-4">
+										<h3 class="title fw500">Buy</h3>
+									</div>
+									<div class="col-8">
+										<span class="currencyinput value-box">₹<input type="number" id="tLESurplus" name="tLESurplus" required value="0"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="row">
+									<div class="col-4">
+										<h3 class="title fw500">Save</h3>
+									</div>
+									<div class="col-8">
+										<span class="currencyinput value-box">₹<input type="number" id="tLESaving" name="tLESaving" required value="0"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="m40">
+							<h3 class="title text-center green-text">Contact Your Turtlemint Advisor Today!</h3>
+						</div>
+						<!-- <div class="m40">
+							<p class="footer-note">*Tax Saver MintPack average rate of return annualized over 3 years.</p>            
+							</div> -->
+					</form>
+				</div>
+			</section>
+		</div>
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script>
+			document.getElementById("tHSurplus").value = getParameterByName('tHSurplus'); 
+			document.getElementById("tHSaving").value = getParameterByName('tHSaving');
+			document.getElementById("tLESurplus").value = getParameterByName('tLESurplus'); 
+			document.getElementById("tLESaving").value = getParameterByName('tLESaving');
+			document.getElementById("gTSavingSpan").textContent = getParameterByName('gTSaving');
+			var tHS = +document.getElementById('tHSaving').value;
+			var tLE = +document.getElementById('tLESaving').value;
+			if((tHS+tLE)>0){}
+			else{
+			  // var moreSaving = document.getElementById("moreSaving");
+			  // moreSaving.style.display = "none";
+			  document.getElementById("moreSaving").textContent = "Congratulations! You have Maximized Your Savings."
+			
+			}
+		</script>
+	</body>
+</html>

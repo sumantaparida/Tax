@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<!-- MediaQuery & Other CSS -->
+		<link rel="stylesheet" href="css/app-style.css">
+		<!-- Font -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+		<!-- ICON -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script>
+			function taxSaverCalc(){
+			  event.preventDefault(); 
+			    var Income = +document.getElementById('income').value;
+			    var SelfHealthPremium = +document.getElementById('selfHealthPremium').value;
+			    var DependantHealthPremium = +document.getElementById('parentHealthPremium').value;
+			    var SelfLifePremium = +document.getElementById('selfLifePremium').value;
+			    var SelfELSSPremium = +document.getElementById('selfELSSPremium').value;
+			    //----------//
+			    var SavingPercentage = 0;
+			    if(Income<=250000){
+			        SavingPercentage = 0;
+			    }
+			    else if(Income>250000 && Income<=500000){
+			        SavingPercentage = 0.05;
+			    }
+			    else if(Income>500000 && Income<=1000000){
+			        SavingPercentage = 0.2;
+			    }
+			    else if(Income>1000000){
+			        SavingPercentage = 0.3;
+			    }
+			
+			    var SelfAnnualHealthPremiumLimit = 25000;
+			    //------Check ------//
+			    if (document.getElementById('selfAge').checked) {
+			        //Self Age above 60
+			        SelfAnnualHealthPremiumLimit = 50000;
+			
+			    } else {
+			        //Self Age not above 60
+			    }
+			
+			    var DependentAnnualHealthPremiumLimit = 25000;
+			    //------Check ------//
+			    if (document.getElementById('parentAge').checked) {
+			        //Parent Age above 60
+			        DependentAnnualHealthPremiumLimit = 50000;
+			    } else {
+			        //Parent Age not above 60
+			    }
+			
+			    var SelfAnnualHealthPremiumSurplus = 0;
+			    if(SelfHealthPremium<SelfAnnualHealthPremiumLimit) {
+			        SelfAnnualHealthPremiumSurplus = SelfAnnualHealthPremiumLimit - SelfHealthPremium; 
+			    }
+			
+			    var DependentAnnualHealthPremiumSurplus = 0;
+			    if(DependantHealthPremium <DependentAnnualHealthPremiumLimit) {
+			        DependentAnnualHealthPremiumSurplus = DependentAnnualHealthPremiumLimit - DependantHealthPremium; 
+			    }
+			
+			    var TotalHealthSurplus = 0;
+			    var TotalHealthSaving = 0;
+			
+			    if(SavingPercentage>0){
+			      TotalHealthSurplus = SelfAnnualHealthPremiumSurplus + DependentAnnualHealthPremiumSurplus;
+			      TotalHealthSaving = TotalHealthSurplus*SavingPercentage;
+			    }		
+			
+			    //Life Premium + ELSS : Together Limit is 150000
+			    var TotalLifeELSSSurplus = 0;
+			    var TotalLifeELSSSaving = 0;
+			    if(SavingPercentage>0){
+			      if((SelfLifePremium+SelfELSSPremium)<150000){
+			          TotalLifeELSSSurplus = 150000 - (SelfLifePremium+SelfELSSPremium);
+			          TotalLifeELSSSaving = TotalLifeELSSSurplus*SavingPercentage;
+			      }
+			    }
+
+
+          //Current Saving Calculation
+			    var GrandTotalSaving = 0;
+			    if(SavingPercentage>0){
+			      //GrandTotalSaving = TotalHealthSaving + TotalLifeELSSSaving;//20210303
+			    }
+			    if(SelfHealthPremium<SelfAnnualHealthPremiumLimit) {
+			      GrandTotalSaving +=SelfHealthPremium*SavingPercentage;
+			    }
+			    else{
+			      GrandTotalSaving +=SelfAnnualHealthPremiumLimit*SavingPercentage;
+			    }
+			    if(DependantHealthPremium <DependentAnnualHealthPremiumLimit)
+			    {
+			      GrandTotalSaving +=DependantHealthPremium*SavingPercentage;
+			    }
+			    else{
+			      GrandTotalSaving += DependentAnnualHealthPremiumLimit*SavingPercentage;
+			    }
+			    if((SelfLifePremium+SelfELSSPremium)<150000){
+			      GrandTotalSaving += (SelfLifePremium+SelfELSSPremium)*SavingPercentage;
+			    }
+			    else{
+			      GrandTotalSaving += 150000*SavingPercentage;
+			    }
+			    TotalLifeELSSSaving = parseFloat(TotalLifeELSSSaving).toFixed(2);
+			    TotalHealthSaving = parseFloat(TotalHealthSaving).toFixed(2);
+			    GrandTotalSaving = parseFloat(GrandTotalSaving).toFixed(2);
+			    TotalHealthSurplus = parseFloat(TotalHealthSurplus).toFixed(2);
+			    TotalLifeELSSSurplus = parseFloat(TotalLifeELSSSurplus).toFixed(2);
+			
+			    window.location.href = "tax-calculator_2.html?tHSurplus="+TotalHealthSurplus+"&tHSaving="+TotalHealthSaving+"&tLESurplus="+TotalLifeELSSSurplus+"&tLESaving="+TotalLifeELSSSaving+"&gTSaving="+GrandTotalSaving;
+			    return false;
+			
+			}
+		</script>   
+		<title>Tax Calculator</title>
+	</head>
+	<body>
+		<div class="mainscreen">
+			<!-- Header -->
+			<section class="header-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-xs-12 header-img">
+							<img src="images/header.png" alt="" style="width: 80%;">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="main-section" id="tax-calculator1">
+				<div class="container" style="padding : 50px 20px 10px 20px;">
+					<form action="tax-calculator_2.html" onsubmit="taxSaverCalc(); return false;">
+						<div class="row m25">
+							<div class="col-7">
+								<h3 class="title"><label>Annual Income</label></h3>
+							</div>
+							<div class="col-5">
+								<span class="currencyinput value-box">₹<input type="number" id="income" name="income" required value="0" onfocus="this.value=''"></span>             
+							</div>
+						</div>
+						<!-- Title 1 -->
+						<div class="row m25">
+							<div class="col-12">
+								<h3 class="title">Tax Savings Under Section 80D</h3>
+							</div>
+						</div>
+						<div class="row inner-row pt15">
+							<div class="col-12">
+								<h3 class="title green-text">Annual Health Insurance Premium</h3>
+								<hr style="border-top: 2px solid #24b478;">
+							</div>
+						</div>
+						<div class="row inner-row">
+							<div class="col-7">
+								<h3 class="title fw500">For Self</h3>
+							</div>
+							<div class="col-5">
+								<span class="currencyinput value-box">₹<input type="number" id="selfHealthPremium" name="selfHealthPremium" required value="0" onfocus="this.value=''"></span>             
+							</div>
+						</div>
+						<div class="row inner-row">
+							<div class="col-7">
+								<label for="selfAge">Tick if your age is above 60</label>              
+							</div>
+							<div class="col-1" style="text-align: right;">
+								<input type="checkbox" id="selfAge" name="selfAge" value="60">              
+							</div>
+							<div class="col-12">
+								<hr style="border-top: 2px dashed #24b478;">
+							</div>
+						</div>
+						<div class="row inner-row">
+							<div class="col-7">
+								<h3 class="title fw500">For Parents / Dependents</h3>
+							</div>
+							<div class="col-5">
+								<span class="currencyinput value-box">₹<input type="number" id="parentHealthPremium" name="parentHealthPremium" required value="0" onfocus="this.value=''"></span>             
+							</div>
+						</div>
+						<div class="row inner-row pb15">
+							<div class="col-7">
+								<label for="parentAge"> Tick if your age is above 60</label>              
+							</div>
+							<div class="col-1" style="text-align: right;">
+								<input type="checkbox" id="parentAge" name="parentAge" value="60">  
+							</div>
+						</div>
+						<!-- END Title 1 -->
+						<!-- Title 2 -->
+						<div class="row m25">
+							<div class="col-12">
+								<h3 class="title">Tax Savings Under Section 80C</h3>
+							</div>
+						</div>
+						<div class="row inner-row">
+							<div class="col-7">
+								<h3 class="title green-text fw500" >Annual Life Insurance Premium</h3>
+							</div>
+							<div class="col-5">
+								<span class="currencyinput value-box">₹<input type="number" name="selfLifePremium" id="selfLifePremium"  required value="0" onfocus="this.value=''"></span>              
+							</div>
+							<div class="col-12">
+								<hr style="border-top: 2px solid #24b478;">
+							</div>
+						</div>
+						<div class="row inner-row">
+							<div class="col-7">
+								<h3 class="title green-text fw500" >Annual ELSS Investment</h3>
+							</div>
+							<div class="col-5">
+								<span class="currencyinput value-box">₹<input type="number" id="selfELSSPremium" name="selfELSSPremium" required value="0" onfocus="this.value=''"></span>
+							</div>
+						</div>
+						<div class="row">
+							<input type="submit" value="CALCULATE TAX SAVINGS" class="btn-green">
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>

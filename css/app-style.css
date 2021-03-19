@@ -1,0 +1,474 @@
+
+/*Common CSS*/
+body{
+	font-family: 'Roboto', sans-serif;
+}
+
+.device-height{min-height: 100vh;}
+
+.fw500{font-weight: 500 !important;}
+/*Common CSS*/
+
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+.device-height {
+	min-height: 100vh;
+}
+
+.fw500 {
+	font-weight: 500 !important;
+}
+
+.pt5 {
+	padding-top: 5px;
+}
+
+.pt15 {
+	padding-top: 15px !important;
+}
+
+.pb15 {
+	padding-bottom: 15px !important;
+}
+
+.m25 {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.m40 {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.header-section {
+	background-color: #24b478;
+}
+
+.main-section {
+	background-color: #f0f8f6;
+}
+
+.header-img {
+	padding: 30px 0;
+	text-align: center;
+}
+
+.header3 {
+	padding: 0px;
+	background-color: #f0f8f6;
+}
+
+.title {
+	color: #323542 !important;
+	font-size: 2em;
+	font-weight: 500;
+	padding-top: 15px;
+	line-height: 1.5;
+}
+
+.sub-title {
+	font-size: 1.5em;
+	text-align: center;
+	font-weight: 600;
+}
+
+.green-text {
+	color: #24b478 !important;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+.value-box {
+	background-color: #e7e7e7;
+	border: none;
+	padding: 10px 30px;
+	color: #939598 !important;
+	font-size: 28px !important;
+	font-weight: 400 !important;
+	width: 100%;
+}
+
+.value-box input {
+	border: none !important;
+	background-color: #e7e7e7 !important;
+	color: #939598 !important;
+	font-size: 28px !important;
+	font-weight: 400 !important;
+}
+
+input:focus {
+	outline: none;
+}
+
+.inner-row {
+	background-color: #efefef;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.inner-row h3 {
+	color: #24b478;
+}
+
+.age-limit {
+	font-size: 1.5em;
+	font-weight: 300;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	background-color: #efefef !important;
+	border: 2px solid #a7a9ac !important;
+}
+
+.btn-green {
+	background-color: #24b478;
+	color: #f0f8f6;
+	padding: 10px 30px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1.2em;
+	margin: 30px auto;
+}
+
+.footer-note {
+	text-align: center;
+	font-weight: 300;
+	font-size: 1em;
+}
+
+input[type="number"],
+input[type="text"] {
+	width: 200px;
+	margin-top: 15px;
+}
+
+
+/******************MEDIA QUERY : DESKTOP & LAPTOP *********************/
+
+@media screen and (min-width: 1025px)
+/*and (max-width: 1280px) */
+{}
+
+.text-center {
+	text-align: center !important;
+}
+
+input#selfAge,
+input#parentAge {
+	margin-right: 50px;
+	outline: 3px solid #a7a9ac;
+}
+
+
+/************ Media Query : MOBILE (320px to 479px) ************/
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.title {
+		font-size: 1.1em;
+		font-weight: 600;
+		padding-top: 10px;
+		line-height: 1.5;
+	}
+	.value-box {
+		background-color: #e7e7e7;
+		border: none;
+		padding: 5px 10px;
+		width: 100%;
+		color: #939598 !important;
+		font-size: 20px !important;
+		font-weight: 400 !important;
+	}
+	.value-box input {
+		width: 95px !important;
+		color: #939598 !important;
+		font-size: 20px !important;
+		font-weight: 400 !important;
+	}
+	.age-limit {
+		font-size: 1.2em;
+		font-weight: 300;
+	}
+	input#selfAge,
+	input#parentAge {
+		margin-right: 0;
+	}
+	input[type="number"],
+	input[type="text"] {
+		width: 55px !important;
+		margin-top: 5px;
+	}
+	#tax-calculator1 input[type="number"],
+	#tax-calculator1 input[type="text"] {
+		width: 85px !important;
+		margin-top: 5px;
+	}
+}
+
+
+/*iPhone 5/SE Media Query 320px X 568px*/
+
+@media only screen and (width: 320px) {
+	/*input[type="number"],input[type="text"] {
+	    width: 55px !important;
+    	margin-top: 5px;
+	}*/
+	#tax-calculator1 input[type="number"],
+	#tax-calculator1 input[type="text"] {
+		width: 67px !important;
+		margin-top: 5px;
+	}
+}
+
+
+/********************* Media Query : iPad (768px X 1024px) Portrait & Landscape **************************/
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+	#tax-calculator1 input[type="number"],
+	input[type="text"] {
+		width: 190px !important;
+		margin-top: 15px;
+	}
+	input[type="number"],
+	input[type="text"] {
+		width: 120px !important;
+		margin-top: 15px;
+	}
+}
+
+
+/********* iPad {768px X 1024px} : Landscape ***********/
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {}
+
+.pt5{
+	padding-top: 5px;
+}
+
+.pt15{
+	padding-top: 15px !important;	
+}
+
+.pb15{	
+	padding-bottom: 15px !important;
+}
+
+.m25{
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.m40{
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+
+.header-section{background-color: #24b478;}
+
+.main-section{ background-color: #f0f8f6; }
+
+.header-img{
+	padding: 30px 0;
+	text-align: center;
+}
+
+.header3{
+	padding: 0px;
+	background-color: #f0f8f6;
+}
+
+.title{
+	color: #323542 !important;
+	font-size: 2em;
+	font-weight: 500;
+	padding-top: 15px;
+	line-height: 1.5;
+}
+
+.sub-title{
+	font-size: 1.5em;
+	text-align: center;
+	font-weight: 600;
+}
+
+
+.green-text{
+	color: #24b478 !important;
+}
+
+.text-center{text-align: center !important;}
+
+.value-box{
+	background-color: #e7e7e7;
+	border: none;
+	padding: 10px 30px;
+	color: #939598 !important;
+	font-size: 28px !important;
+	font-weight: 400 !important;
+	width: 100%;
+}
+
+.value-box input {
+    border: none !important;
+    background-color: #e7e7e7 !important;
+    color: #939598 !important;
+	font-size: 28px !important;
+	font-weight: 400 !important;
+}
+
+input:focus {
+    outline: none;
+}
+
+.inner-row{
+	background-color: #efefef;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+
+.inner-row h3{
+	color: #24b478;
+}
+
+.age-limit{
+	font-size: 1.5em;
+	font-weight: 300;
+}
+
+input[type=checkbox], input[type=radio]{
+	background-color: #efefef !important;
+	border: 2px solid #a7a9ac !important;
+}
+
+.btn-green{
+	background-color: #24b478;
+    color: #f0f8f6 !important;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin: 30px auto;
+}
+.btn-green:hover, .btn-green:focus {
+	color: #f0f8f6;
+	font-size: 1.2em;
+	text-decoration: none;
+}
+
+.footer-note{
+	text-align: center;
+	font-weight: 300;
+	font-size: 1em;
+}
+
+input[type="number"],input[type="text"] {
+    width: 200px;
+    margin-top: 15px;
+}
+
+/******************MEDIA QUERY : DESKTOP & LAPTOP *********************/
+@media screen and (min-width: 1025px) /*and (max-width: 1280px) */{}
+ .text-center{text-align: center !important;}
+
+
+ input#selfAge,input#parentAge {
+    margin-right: 50px;
+	outline: 3px solid #a7a9ac;
+}
+	
+/************ Media Query : MOBILE (320px to 479px) ************/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  	.title{
+		font-size: 1.1em;
+		font-weight: 600;
+		padding-top: 10px;
+		line-height: 1.5;
+	}
+
+	.value-box{
+		background-color: #e7e7e7;
+		border: none;
+		padding: 5px 10px;		
+		width: 100%;
+		color: #939598 !important;
+		font-size: 20px !important;
+		font-weight: 400 !important;
+	}
+
+	.value-box input{width: 95px !important;
+		color: #939598 !important;
+		font-size: 20px !important;
+		font-weight: 400 !important;}
+
+
+	.age-limit{
+		font-size: 1.2em;
+		font-weight: 300;
+	}
+
+	input#selfAge,input#parentAge {
+	    margin-right: 0;
+	}
+
+	input[type="number"],input[type="text"] {
+	    width: 55px !important;
+    	margin-top: 5px;
+	}
+
+	#tax-calculator1 input[type="number"],#tax-calculator1 input[type="text"] {
+	    width: 85px !important;
+    	margin-top: 5px;
+	}
+
+
+}
+
+/*iPhone 5/SE Media Query 320px X 568px*/
+@media only screen and (width: 320px) { 
+
+	/*input[type="number"],input[type="text"] {
+	    width: 55px !important;
+    	margin-top: 5px;
+	}*/
+
+	#tax-calculator1 input[type="number"],#tax-calculator1 input[type="text"] {
+	    width: 67px !important;
+    	margin-top: 5px;
+	}
+
+
+}
+
+
+/********************* Media Query : iPad (768px X 1024px) Portrait & Landscape **************************/
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
+	
+#tax-calculator1 input[type="number"],input[type="text"] {
+    width: 190px !important;
+    margin-top: 15px;
+}
+
+input[type="number"],input[type="text"] {
+    width: 120px  !important;
+    margin-top: 15px;
+}
+
+}
+
+
+/********* iPad {768px X 1024px} : Landscape ***********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 1)  {
+
+	
+}
+
+
